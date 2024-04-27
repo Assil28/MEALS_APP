@@ -20,7 +20,8 @@ class CategoryItem extends StatelessWidget {
       ),
     );*/
     Navigator.of(context).pushNamed(
-      '/category-meals',
+      // '/category-meals',
+      CategoryMealsScreen.routeName,
       arguments: {'id': id, 'title': title},
     );
   }
