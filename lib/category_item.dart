@@ -6,12 +6,23 @@ class CategoryItem extends StatelessWidget {
   final String title;
   final Color color;
 
-  CategoryItem(this.id,this.title, this.color);
+  CategoryItem(this.id, this.title, this.color);
 
-  void selectCategory(BuildContext context){
-    Navigator.of(context).push(MaterialPageRoute(builder: (_){
-      return CategoryMealsScreen(id, title,);
-    },),);
+  void selectCategory(BuildContext context) {
+    /* Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) {
+          return CategoryMealsScreen(
+            id,
+            title,
+          );
+        },
+      ),
+    );*/
+    Navigator.of(context).pushNamed(
+      '/category-meals',
+      arguments: {'id': id, 'title': title},
+    );
   }
 
   @override
@@ -20,7 +31,6 @@ class CategoryItem extends StatelessWidget {
       onTap: () => selectCategory(context),
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
-
       child: Container(
         padding: const EdgeInsets.all(15),
         child: Text(
