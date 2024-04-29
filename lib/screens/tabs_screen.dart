@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/screens/categories_screen.dart';
 import 'package:meals_app/screens/favorites_screen.dart';
 import 'package:meals_app/widgets/main_drawer.dart';
@@ -57,22 +58,32 @@ class _TabsScreenState extends State<TabsScreen> {
 // For Bottom Navigation bar
 
 class TabsScreen extends StatefulWidget {
+  final List<Meal> favoriteMelas;
+
+  TabsScreen(this.favoriteMelas);
+
   @override
   State<TabsScreen> createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Map<String, Object>> _pages = [
-    {
-      'page': CategoriesScreen(),
-      'title': 'Categories',
-    },
-    {
-      'page': FavoritesScreen(),
-      'title': 'Your Favorite',
-    },
-  ];
+  late List<Map<String, Object>> _pages;
   int _selectedPageIndex = 0;
+
+  @override
+  void initState() {
+    _pages = [
+      {
+        'page': CategoriesScreen(),
+        'title': 'Categories',
+      },
+      {
+        'page': FavoritesScreen(widget.favoriteMelas),
+        'title': 'Your Favorite',
+      },
+    ];
+    super.initState();
+  }
 
   void _selectPage(int index) {
     setState(() {
@@ -89,7 +100,8 @@ class _TabsScreenState extends State<TabsScreen> {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.pink,
-          iconTheme: IconThemeData(color: Colors.white), // to change the color of the icon drawer
+        iconTheme: IconThemeData(
+            color: Colors.white), // to change the color of the icon drawer
       ),
       drawer: MainDrawer(),
       body: _pages[_selectedPageIndex]['page'] as Widget,
