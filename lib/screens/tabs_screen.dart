@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/screens/categories_screen.dart';
 import 'package:meals_app/screens/favorites_screen.dart';
+import 'package:meals_app/widgets/main_drawer.dart';
 
 /*
  // For Top Naviagation Bar
@@ -88,7 +89,9 @@ class _TabsScreenState extends State<TabsScreen> {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.pink,
+          iconTheme: IconThemeData(color: Colors.white), // to change the color of the icon drawer
       ),
+      drawer: MainDrawer(),
       body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
