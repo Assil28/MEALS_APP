@@ -7,7 +7,6 @@ import 'package:meals_app/screens/filters_screen.dart';
 import 'package:meals_app/screens/meal_detail_screen.dart';
 import 'package:meals_app/screens/tabs_screen.dart';
 
-//20
 
 void main() => runApp(MyApp());
 
